@@ -3,10 +3,12 @@ import AvatarIcon from "../../assets/icons/AvatarIcon";
 import BarIcon from "../../assets/icons/BarIcon";
 import CartIcon from "../../assets/icons/CartIcon";
 import GlobeIcon from "../../assets/icons/GlobeIcon";
-import SearchIcon from "../../assets/icons/SearchIcon";
 import WishlistIcon from "../../assets/icons/WishlistIcon";
 import Button from "../../components/Ui/Button";
 import Dropdown from "../../components/Ui/Dropdown";
+
+import { Link } from "react-router-dom";
+import SearchInput from "../../components/Ui/SearchInput";
 
 const Header = () => {
   const [selectedLanguage, setSelectedLanguage] = useState({
@@ -17,18 +19,23 @@ const Header = () => {
     icon: "$",
   });
 
+  // Handle search input
+  const handleSearch = (searchText) => {
+    console.log("Searching for:", searchText);
+  };
+
   return (
-    <header className="bg-black py-3 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto">
+    <header className="bg-black py-2 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto gap-4">
       {/* Logo */}
-      <div className="flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-2">
         <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
           <span className="text-black font-bold">Z</span>
         </div>
         <span className="text-white text-lg font-bold">ZEK ZONE</span>
-      </div>
+      </Link>
 
       {/* Category & Search */}
-      <div className="flex items-center gap-4 flex-1 mx-6">
+      <div className="flex items-center gap-4 flex-1 mr-4">
         {/* Category Dropdown */}
         <Dropdown
           label="Category"
@@ -41,17 +48,11 @@ const Header = () => {
           icon={<BarIcon fill="none" />}
           onSelect={(option) => console.log("Selected Category:", option)}
           btnType="primary"
+          className="!pr-20"
         />
 
         {/* Search Bar */}
-        <div className="flex items-center flex-1 bg-dark-gray px-4 py-2 rounded-full border border-border">
-          <input
-            type="text"
-            placeholder="Search"
-            className="flex-1 bg-transparent outline-none text-white "
-          />
-          <SearchIcon fill="none" />
-        </div>
+        <SearchInput onSearch={handleSearch} className="max-w-md mx-auto" />
       </div>
 
       {/* Right-side Icons */}
