@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Button = ({
   isCustom = false,
@@ -11,6 +11,7 @@ const Button = ({
   loadingText = "Loading...",
   disabled = false,
   spinnerColor = "#FFFCFB",
+  active = false, // <-- Accepts active state
   ...restProps
 }) => {
   // Spinner component
@@ -27,14 +28,20 @@ const Button = ({
       "text-center px-3 py-2 md:px-4 md:py-2 rounded-full flex items-center justify-center gap-2 font-[600]";
 
     const primaryColors = {
-      default:
-        "bg-primary text-white hover:bg-opacity-90 transition-all duration-300",
+      default: `bg-primary text-white hover:bg-opacity-90 transition-all duration-300 ${
+        active ? "bg-opacity-90" : ""
+      }`, // <-- Fix: Active state should change bg for primary
     };
 
     const secondaryColors = {
-      default:
-        "bg-secondary text-black hover:bg-opacity-90 transition-all duration-300",
+      default: `bg-secondary text-black hover:bg-opacity-90 transition-all duration-300 ${
+        active ? "bg-dark-gray" : ""
+      }`,
     };
+
+    const outlineStyles = `border border-border hover:bg-dark-gray active:bg-dark-gray disabled:opacity-40 ${
+      active ? "bg-dark-gray" : ""
+    }`;
 
     switch (btnType) {
       case "primary":
@@ -42,9 +49,7 @@ const Button = ({
       case "secondary":
         return `${baseClasses} ${secondaryColors[colorScheme]} ${className}`;
       case "outline":
-        return `${baseClasses}  border
-         border-border hover:bg-dark-gray
-          hover:bg-border active:bg-dark-gray active:bg-border disabled:opacity-40 ${className}`;
+        return `${baseClasses} ${outlineStyles} ${className}`;
       default:
         return `${baseClasses} ${className}`;
     }
@@ -89,7 +94,7 @@ const Button = ({
 
   if (href) {
     return (
-      <RouterLink to={href}>
+      <Link to={href}>
         <button
           className={`${getButtonClasses()} ${
             disabled ? "pointer-events-none cursor-not-allowed opacity-60" : ""
@@ -99,7 +104,7 @@ const Button = ({
           {loading && <Spinner />}
           {loading ? loadingText : children}
         </button>
-      </RouterLink>
+      </Link>
     );
   }
 

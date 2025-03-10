@@ -40,7 +40,7 @@ const Header = () => {
           ]}
           icon={<BarIcon fill="none" />}
           onSelect={(option) => console.log("Selected Category:", option)}
-          className="!bg-primary hover:!bg-opacity-90 hover:!bg-primary md:!pr-20"
+          btnType="primary"
         />
 
         {/* Search Bar */}

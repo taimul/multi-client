@@ -26,13 +26,12 @@ const Dropdown = ({
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Dropdown Button */}
+      {/* Dropdown Button - Uses active styles from Button component */}
       <Button
         btnType={btnType}
-        className={`relative flex items-center text-white ${
-          isOpen ? "bg-black-gray" : ""
-        } ${className}`}
+        className={`${className}`}
         onClick={() => setIsOpen(!isOpen)}
+        active={isOpen} // Pass active state to Button component
       >
         {icon && <span>{icon}</span>}
         <span className="flex items-center gap-2">{label}</span>
