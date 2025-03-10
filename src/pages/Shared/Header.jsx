@@ -1,10 +1,3 @@
-import { FaBars, FaGlobe, FaSearch } from "react-icons/fa";
-import { IoIosWallet } from "react-icons/io";
-import { MdOutlineAttachMoney } from "react-icons/md";
-import AvatarIcon from "../../assets/icons/AvatarIcon";
-import CartIcon from "../../assets/icons/CartIcon";
-import WishlistIcon from "../../assets/icons/wishlistIcon";
-
 const Header = () => {
   return (
     <header className="bg-black py-3 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto">
@@ -19,7 +12,7 @@ const Header = () => {
       {/* Category & Search */}
       <div className="flex items-center gap-4 flex-1 mx-6">
         <button className="flex items-center gap-2 bg-primary px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600">
-          <FaBars />
+          <Icon />
           Category
         </button>
         <div className="flex items-center flex-1 bg-dark-gray px-4 py-2 rounded-full">
