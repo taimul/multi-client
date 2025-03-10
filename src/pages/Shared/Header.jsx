@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AvatarIcon from "../../assets/icons/AvatarIcon";
 import BarIcon from "../../assets/icons/BarIcon";
 import CartIcon from "../../assets/icons/CartIcon";
@@ -6,11 +7,10 @@ import GlobeIcon from "../../assets/icons/GlobeIcon";
 import WishlistIcon from "../../assets/icons/WishlistIcon";
 import Button from "../../components/Ui/Button";
 import Dropdown from "../../components/Ui/Dropdown";
-
-import { Link } from "react-router-dom";
 import SearchInput from "../../components/Ui/SearchInput";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState({
     label: "EN",
   });
@@ -19,13 +19,26 @@ const Header = () => {
     icon: "$",
   });
 
-  // Handle search input
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleSearch = (searchText) => {
     console.log("Searching for:", searchText);
   };
 
   return (
-    <header className="bg-black py-2 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto gap-4 mt-10">
+    <header
+      className={`fixed  left-1/2 transform -translate-x-1/2 w-full max-w-[1440px] 
+      py-2 px-6 border border-primary rounded-full flex items-center justify-between 
+      bg-black transition-all duration-100 z-50 ${
+        isScrolled ? "top-0 shadow-lg backdrop-blur-lg" : "top-10"
+      }`}
+    >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
         <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
@@ -35,8 +48,7 @@ const Header = () => {
       </Link>
 
       {/* Category & Search */}
-      <div className="flex items-center gap-4 flex-1 mr-4">
-        {/* Category Dropdown */}
+      <div className="flex items-center gap-4 flex-1 mx-4">
         <Dropdown
           label="Category"
           options={[
@@ -50,31 +62,21 @@ const Header = () => {
           btnType="primary"
           className="!pr-20"
         />
-
-        {/* Search Bar */}
         <SearchInput onSearch={handleSearch} className="max-w-md mx-auto" />
       </div>
 
       {/* Right-side Icons */}
       <div className="flex items-center gap-4 text-white">
-        {/* Language Dropdown with Flags */}
         <Dropdown
           label={
             <span className="flex items-center gap-2">
               {selectedLanguage.icon} {selectedLanguage.label}
             </span>
           }
-          options={[
-            { label: "EN" },
-            // { label: "ES", value: "es", icon: "🇪🇸" },
-            // { label: "FR", value: "fr", icon: "🇫🇷" },
-            // { label: "DE", value: "de", icon: "🇩🇪" },
-          ]}
+          options={[{ label: "EN" }]}
           icon={<GlobeIcon fill="none" />}
           onSelect={(option) => setSelectedLanguage(option)}
         />
-
-        {/* Currency Dropdown with Symbols */}
         <Dropdown
           label={
             <span className="flex items-center gap-2">
@@ -86,11 +88,8 @@ const Header = () => {
             { label: "EUR", value: "eur", icon: "€" },
             { label: "AED", value: "aed", icon: "د.إ" },
           ]}
-          // icon={<CurrencyIcon />}
           onSelect={(option) => setSelectedCurrency(option)}
         />
-
-        {/* Wishlist, Cart, Avatar */}
         <Button btnType="outline" className="md:!px-2 px-2">
           <WishlistIcon fill="none" />
         </Button>
