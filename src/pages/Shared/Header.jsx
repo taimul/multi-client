@@ -1,14 +1,17 @@
+import { useState } from "react";
 import AvatarIcon from "../../assets/icons/AvatarIcon";
 import BarIcon from "../../assets/icons/BarIcon";
 import CartIcon from "../../assets/icons/CartIcon";
 import CurrencyIcon from "../../assets/icons/CurrencyIcon";
 import GlobeIcon from "../../assets/icons/GlobeIcon";
 import SearchIcon from "../../assets/icons/SearchIcon";
-import WalletIcon from "../../assets/icons/WalletIcon";
 import Button from "../../components/Ui/Button";
+import Dropdown from "../../components/Ui/Dropdown";
 import WishlistIcon from "./../../assets/icons/WishlistIcon";
 
 const Header = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [selectedCurrency, setSelectedCurrency] = useState("USD");
   return (
     <header className="bg-black py-3 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto">
       {/* Logo */}
@@ -21,13 +24,22 @@ const Header = () => {
 
       {/* Category & Search */}
       <div className="flex items-center gap-4 flex-1 mx-6">
-        <div className="border border-border p-1 rounded-full">
-          <Button className="!pr-20 ">
-            <BarIcon fill="none" />
-            Category
-          </Button>
-        </div>
-        <div className="flex items-center flex-1 bg-dark-gray px-4 py-2 rounded-full border-border border">
+        {/* Category Dropdown */}
+        <Dropdown
+          label="Category"
+          options={[
+            { label: "Electronics", value: "electronics" },
+            { label: "Fashion", value: "fashion" },
+            { label: "Home & Living", value: "home" },
+            { label: "Gaming", value: "gaming" },
+          ]}
+          icon={<BarIcon fill="none" />}
+          onSelect={(option) => console.log("Selected Category:", option)}
+          className="!bg-primary hover:!bg-opacity-90 hover:!bg-primary md:!pr-20"
+        />
+
+        {/* Search Bar */}
+        <div className="flex items-center flex-1 bg-dark-gray px-4 py-2 rounded-full border border-border">
           <input
             type="text"
             placeholder="Search"
@@ -39,18 +51,30 @@ const Header = () => {
 
       {/* Right-side Icons */}
       <div className="flex items-center gap-4 text-white">
-        <Button btnType="outline">
-          <GlobeIcon fill="none" size={24} />
-          EN
-        </Button>
-        <Button btnType="outline">
-          <CurrencyIcon />
-          USD
-        </Button>
-        <Button btnType="outline">
-          <WalletIcon fill="none" />
-          <span className="text-primary">650$</span>
-        </Button>
+        {/* Language Dropdown */}
+        <Dropdown
+          label={selectedLanguage}
+          options={[
+            { label: "EN", value: "en" },
+            { label: "ES", value: "es" },
+            { label: "FR", value: "fr" },
+            { label: "DE", value: "de" },
+          ]}
+          icon={<GlobeIcon fill="none" />}
+          onSelect={(option) => setSelectedLanguage(option.label)}
+        />
+
+        {/* Currency Dropdown */}
+        <Dropdown
+          label={selectedCurrency}
+          options={[
+            { label: "USD", value: "usd" },
+            { label: "EUR", value: "eur" },
+            { label: "AED", value: "aed" },
+          ]}
+          icon={<CurrencyIcon />}
+          onSelect={(option) => setSelectedCurrency(option.label)}
+        />
 
         <Button btnType="outline" className="md:!px-2 px-2">
           <WishlistIcon fill="none" />
