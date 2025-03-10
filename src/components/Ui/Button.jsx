@@ -29,17 +29,11 @@ const Button = ({
     const primaryColors = {
       default:
         "bg-primary text-white hover:bg-opacity-90 transition-all duration-300",
-      dark: "bg-dark-primary text-white hover:bg-primary transition-all duration-300",
-      light:
-        "bg-primary text-white hover:bg-secondary transition-all duration-300",
     };
 
     const secondaryColors = {
       default:
-        "bg-accent1 text-white hover:bg-dark-accent2 hover:text-white transition-all duration-300",
-      dark: "bg-dark-accent1 text-white hover:bg-accent2 transition-all duration-300",
-      light:
-        "bg-accent1 text-white hover:bg-dark-accent2 transition-all duration-300",
+        "bg-secondary text-black hover:bg-opacity-90 transition-all duration-300",
     };
 
     switch (btnType) {
@@ -48,9 +42,9 @@ const Button = ({
       case "secondary":
         return `${baseClasses} ${secondaryColors[colorScheme]} ${className}`;
       case "outline":
-        return `${baseClasses} dark:border-dark-border border
-         border-border text-text dark:text-dark-text hover:bg-gray-200
-          dark:hover:bg-dark-border active:bg-gray-100 disabled:opacity-40 ${className}`;
+        return `${baseClasses}  border
+         border-border hover:bg-dark-gray
+          hover:bg-border active:bg-dark-gray active:bg-border disabled:opacity-40 ${className}`;
       default:
         return `${baseClasses} ${className}`;
     }

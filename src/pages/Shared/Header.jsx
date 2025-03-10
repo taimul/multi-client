@@ -22,7 +22,7 @@ const Header = () => {
       {/* Category & Search */}
       <div className="flex items-center gap-4 flex-1 mx-6">
         <div className="border border-border p-1 rounded-full">
-          <Button>
+          <Button className="!pr-20 ">
             <BarIcon fill="none" />
             Category
           </Button>
@@ -39,28 +39,28 @@ const Header = () => {
 
       {/* Right-side Icons */}
       <div className="flex items-center gap-4 text-white">
-        <button className="flex items-center gap-[6px] bg-dark-gray px-[14px] py-[10px] rounded-full">
+        <Button btnType="outline">
           <GlobeIcon fill="none" size={24} />
           EN
-        </button>
-        <button className="flex items-center gap-[6px] bg-dark-gray px-[14px] py-[10px] rounded-full">
+        </Button>
+        <Button btnType="outline">
           <CurrencyIcon />
           USD
-        </button>
-        <div className="flex items-center gap-[6px] bg-dark-gray px-[14px] py-[10px] rounded-full">
+        </Button>
+        <Button btnType="outline">
           <WalletIcon fill="none" />
           <span className="text-primary">650$</span>
-        </div>
+        </Button>
 
-        <div className="p-[10px] bg-dark-gray rounded-full">
+        <Button btnType="outline" className="md:!px-2 px-2">
           <WishlistIcon fill="none" />
-        </div>
-        <div className="p-[10px] bg-dark-gray rounded-full">
+        </Button>
+        <Button btnType="outline" className="md:!px-2 px-2">
           <CartIcon fill="none" />
-        </div>
-        <div className="p-[10px] bg-dark-gray rounded-full">
+        </Button>
+        <Button btnType="outline" className="md:!px-2 px-2">
           <AvatarIcon fill="none" />
-        </div>
+        </Button>
       </div>
     </header>
   );
