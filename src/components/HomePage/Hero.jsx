@@ -27,6 +27,16 @@ const cards = [
     title: "Legendary Quest",
     image: "https://picsum.photos/400/400?random=5",
   },
+  {
+    id: 6,
+    title: "Legendary Quest",
+    image: "https://picsum.photos/400/400?random=6",
+  },
+  {
+    id: 7,
+    title: "Legendary Quest",
+    image: "https://picsum.photos/400/400?random=7",
+  },
 ];
 
 const Hero = () => {
@@ -34,57 +44,62 @@ const Hero = () => {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white py-16"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       {/* Text Content */}
-      <div className="text-center px-4 mb-8">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <div className="text-center px-4 mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
           Seamless Access to Digital Essentials
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
           Discover exclusive digital gaming products, from in-game currency to
           premium content—instantly delivered to fuel your next adventure!
         </p>
       </div>
 
       {/* Cards Container */}
-      <div className="flex justify-center items-center w-full overflow-x-auto px-4 py-8">
-        <div className="flex relative h-96">
-          {cards.map((card, index) => (
+      <div className="relative flex justify-center items-center h-[400px] w-full">
+        {cards.map((card, index) => {
+          const positionOffset = (index - (cards.length - 1) / 2) * 100; // Spread cards evenly
+          const rotationAngle = (index - (cards.length - 1) / 2) * 10; // Create a curve effect
+
+          return (
             <div
               key={card.id}
-              className="relative transition-all duration-300 ease-out cursor-pointer mx-[-60px] hover:mx-[-20px]"
+              className="absolute transition-all duration-500 ease-in-out cursor-pointer"
               style={{
-                zIndex: hoveredIndex === index ? 30 : 20 - index,
+                transform: `
+                  translateX(${positionOffset}px) 
+                  rotate(${rotationAngle}deg)
+                  translateY(${hoveredIndex === index ? "-40px" : "0px"})
+                  scale(${hoveredIndex === index ? 1.1 : 1})
+                `,
+                zIndex: hoveredIndex === index ? 10 : index,
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div
-                className={`w-48 h-64 md:w-60 md:h-72 lg:w-72 lg:h-80 shadow-2xl rounded-xl border-2 border-white/20 transition-transform duration-300 ${
-                  hoveredIndex === index ? "scale-110" : "scale-100"
-                }`}
-              >
+              <div className="relative w-44 h-60 md:w-56 md:h-72 lg:w-64 lg:h-80">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-cover rounded-xl"
+                  className="w-full h-full object-cover rounded-lg shadow-xl border-2 border-white/10"
                 />
                 {/* Title Overlay */}
                 <div
-                  className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent rounded-b-xl transition-opacity duration-300 ${
+                  className={`absolute bottom-0 left-0 right-0 p-4 bg-black/80 text-center transition-opacity duration-300 ${
                     hoveredIndex === index ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <h3 className="text-lg font-bold text-center">
+                  <h3 className="text-sm md:text-base font-semibold">
                     {card.title}
                   </h3>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </div>
   );
