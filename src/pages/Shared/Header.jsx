@@ -1,3 +1,12 @@
+import AvatarIcon from "../../assets/icons/AvatarIcon";
+import BarIcon from "../../assets/icons/BarIcon";
+import CartIcon from "../../assets/icons/CartIcon";
+import CurrencyIcon from "../../assets/icons/CurrencyIcon";
+import GlobeIcon from "../../assets/icons/GlobeIcon";
+import SearchIcon from "../../assets/icons/SearchIcon";
+import WalletIcon from "../../assets/icons/WalletIcon";
+import WishlistIcon from "./../../assets/icons/WishlistIcon";
+
 const Header = () => {
   return (
     <header className="bg-black py-3 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto">
@@ -12,7 +21,7 @@ const Header = () => {
       {/* Category & Search */}
       <div className="flex items-center gap-4 flex-1 mx-6">
         <button className="flex items-center gap-2 bg-primary px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600">
-          <Icon />
+          <BarIcon fill="none" />
           Category
         </button>
         <div className="flex items-center flex-1 bg-dark-gray px-4 py-2 rounded-full">
@@ -21,22 +30,22 @@ const Header = () => {
             placeholder="Search"
             className="flex-1 bg-transparent outline-none text-white"
           />
-          <FaSearch className="text-white" />
+          <SearchIcon fill="none" />
         </div>
       </div>
 
       {/* Right-side Icons */}
       <div className="flex items-center gap-4 text-white">
-        <button className="flex items-center gap-1 bg-dark-gray px-3 py-2 rounded-full">
-          <FaGlobe />
+        <button className="flex items-center gap-[6px] bg-dark-gray px-3 py-2 rounded-full">
+          <GlobeIcon fill="none" size={24} />
           EN
         </button>
-        <button className="flex items-center gap-1 bg-dark-gray px-3 py-2 rounded-full">
-          <MdOutlineAttachMoney />
+        <button className="flex items-center gap-[6px] bg-dark-gray px-3 py-2 rounded-full">
+          <CurrencyIcon />
           USD
         </button>
-        <div className="flex items-center gap-4 bg-dark-gray px-3 py-2 rounded-full">
-          <IoIosWallet />
+        <div className="flex items-center gap-[6px] bg-dark-gray px-3 py-2 rounded-full">
+          <WalletIcon fill="none" />
           <span className="text-primary">650$</span>
         </div>
 
