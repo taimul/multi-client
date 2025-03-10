@@ -48,7 +48,7 @@ const Hero = () => {
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       {/* Text Content */}
-      <div className="text-center px-4 mb-12">
+      <div className="text-center px-4 mb-10">
         <h1 className="text-5xl lg:text-5xl font-bold mb-6">
           Seamless Access to Digital Essentials
         </h1>
