@@ -90,13 +90,13 @@ const Header = () => {
           ]}
           onSelect={(option) => setSelectedCurrency(option)}
         />
-        <Button btnType="outline" className="md:!px-2 px-2">
+        <Button btnType="outline" className="lg:!px-2 px-2">
           <WishlistIcon fill="none" />
         </Button>
-        <Button btnType="outline" className="md:!px-2 px-2">
+        <Button btnType="outline" className="lg:!px-2 px-2">
           <CartIcon fill="none" />
         </Button>
-        <Button btnType="outline" className="md:!px-2 px-2">
+        <Button btnType="outline" className="lg:!px-2 px-2">
           <AvatarIcon fill="none" />
         </Button>
       </div>

@@ -49,10 +49,10 @@ const Hero = () => {
     >
       {/* Text Content */}
       <div className="text-center px-4 mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <h1 className="text-5xl lg:text-5xl font-bold mb-6">
           Seamless Access to Digital Essentials
         </h1>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+        <p className="text-base text-gray-300 max-w-3xl mx-auto">
           Discover exclusive digital gaming products, from in-game currency to
           premium content—instantly delivered to fuel your next adventure!
         </p>
@@ -82,7 +82,7 @@ const Hero = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative w-36 h-52 md:w-48 md:h-64 lg:w-56 lg:h-72">
+              <div className="relative w-36 h-52 lg:w-48 lg:h-64 lg:w-56 lg:h-72">
                 <img
                   src={card.image}
                   alt={card.title}
@@ -94,7 +94,7 @@ const Hero = () => {
                     hoveredIndex === index ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <h3 className="text-sm md:text-base font-semibold">
+                  <h3 className="text-sm lg:text-base font-semibold">
                     {card.title}
                   </h3>
                 </div>

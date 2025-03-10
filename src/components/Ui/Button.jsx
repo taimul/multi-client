@@ -25,7 +25,7 @@ const Button = ({
   // Define button styles based on btnType and colorScheme
   const getButtonClasses = () => {
     let baseClasses =
-      "text-center px-3 py-2 md:px-4 md:py-2 rounded-full flex items-center justify-center gap-2 font-[600]";
+      "text-center px-3 py-2 lg:px-4 lg:py-2 rounded-full flex items-center justify-center gap-2 font-[600]";
 
     const primaryColors = {
       default: `bg-primary text-white hover:bg-opacity-90 transition-all duration-300 ${
