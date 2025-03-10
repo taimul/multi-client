@@ -2,16 +2,21 @@ import { useState } from "react";
 import AvatarIcon from "../../assets/icons/AvatarIcon";
 import BarIcon from "../../assets/icons/BarIcon";
 import CartIcon from "../../assets/icons/CartIcon";
-import CurrencyIcon from "../../assets/icons/CurrencyIcon";
 import GlobeIcon from "../../assets/icons/GlobeIcon";
 import SearchIcon from "../../assets/icons/SearchIcon";
+import WishlistIcon from "../../assets/icons/WishlistIcon";
 import Button from "../../components/Ui/Button";
 import Dropdown from "../../components/Ui/Dropdown";
-import WishlistIcon from "./../../assets/icons/WishlistIcon";
 
 const Header = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("EN");
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [selectedLanguage, setSelectedLanguage] = useState({
+    label: "EN",
+  });
+  const [selectedCurrency, setSelectedCurrency] = useState({
+    label: "USD",
+    icon: "$",
+  });
+
   return (
     <header className="bg-black py-3 px-6 border border-primary rounded-full flex items-center justify-between max-w-[1440px] mx-auto">
       {/* Logo */}
@@ -51,31 +56,40 @@ const Header = () => {
 
       {/* Right-side Icons */}
       <div className="flex items-center gap-4 text-white">
-        {/* Language Dropdown */}
+        {/* Language Dropdown with Flags */}
         <Dropdown
-          label={selectedLanguage}
+          label={
+            <span className="flex items-center gap-2">
+              {selectedLanguage.icon} {selectedLanguage.label}
+            </span>
+          }
           options={[
-            { label: "EN", value: "en" },
-            { label: "ES", value: "es" },
-            { label: "FR", value: "fr" },
-            { label: "DE", value: "de" },
+            { label: "EN" },
+            // { label: "ES", value: "es", icon: "🇪🇸" },
+            // { label: "FR", value: "fr", icon: "🇫🇷" },
+            // { label: "DE", value: "de", icon: "🇩🇪" },
           ]}
           icon={<GlobeIcon fill="none" />}
-          onSelect={(option) => setSelectedLanguage(option.label)}
+          onSelect={(option) => setSelectedLanguage(option)}
         />
 
-        {/* Currency Dropdown */}
+        {/* Currency Dropdown with Symbols */}
         <Dropdown
-          label={selectedCurrency}
+          label={
+            <span className="flex items-center gap-2">
+              {selectedCurrency.icon} {selectedCurrency.label}
+            </span>
+          }
           options={[
-            { label: "USD", value: "usd" },
-            { label: "EUR", value: "eur" },
-            { label: "AED", value: "aed" },
+            { label: "USD", value: "usd", icon: "$" },
+            { label: "EUR", value: "eur", icon: "€" },
+            { label: "AED", value: "aed", icon: "د.إ" },
           ]}
-          icon={<CurrencyIcon />}
-          onSelect={(option) => setSelectedCurrency(option.label)}
+          // icon={<CurrencyIcon />}
+          onSelect={(option) => setSelectedCurrency(option)}
         />
 
+        {/* Wishlist, Cart, Avatar */}
         <Button btnType="outline" className="md:!px-2 px-2">
           <WishlistIcon fill="none" />
         </Button>

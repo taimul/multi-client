@@ -29,13 +29,13 @@ const Dropdown = ({
       {/* Dropdown Button */}
       <Button
         btnType={btnType}
-        className={`relative text-white ${
-          isOpen ? "bg-black-gray " : ""
+        className={`relative flex items-center text-white ${
+          isOpen ? "bg-black-gray" : ""
         } ${className}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         {icon && <span>{icon}</span>}
-        {label}
+        <span className="flex items-center gap-2">{label}</span>
       </Button>
 
       {/* Dropdown Menu */}
@@ -44,12 +44,13 @@ const Dropdown = ({
           {options.map((option, index) => (
             <div
               key={index}
-              className="px-4 py-2 cursor-pointer hover:bg-gray-700 transition"
+              className="px-4 py-2 cursor-pointer hover:bg-gray-700 transition flex items-center gap-2"
               onClick={() => {
                 onSelect(option);
                 setIsOpen(false);
               }}
             >
+              {option.icon && <span>{option.icon}</span>}
               {option.label}
             </div>
           ))}
