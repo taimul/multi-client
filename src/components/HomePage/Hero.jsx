@@ -44,7 +44,7 @@ const Hero = () => {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white"
+      className="relative min-h-[90svh] flex flex-col items-center justify-center bg-fill bg-center text-white"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       {/* Text Content */}
@@ -59,7 +59,7 @@ const Hero = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="relative flex justify-center items-center h-[400px] w-full">
+      <div className="relative flex justify-center items-center h-[350px] w-full">
         {cards.map((card, index) => {
           // Calculate spread positions
           const midIndex = (cards.length - 1) / 2;
@@ -82,7 +82,7 @@ const Hero = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative w-36 h-52 lg:w-48 lg:h-64 lg:w-56 lg:h-72">
+              <div className="relative w-36 h-52 md:w-48 md:h-64 lg:w-56 lg:h-72">
                 <img
                   src={card.image}
                   alt={card.title}
