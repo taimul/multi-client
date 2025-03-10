@@ -29,12 +29,12 @@ const cards = [
   },
   {
     id: 6,
-    title: "Legendary Quest",
+    title: "Elden Realm",
     image: "https://picsum.photos/400/400?random=6",
   },
   {
     id: 7,
-    title: "Legendary Quest",
+    title: "Ancient Dragon",
     image: "https://picsum.photos/400/400?random=7",
   },
 ];
@@ -61,8 +61,10 @@ const Hero = () => {
       {/* Cards Container */}
       <div className="relative flex justify-center items-center h-[400px] w-full">
         {cards.map((card, index) => {
-          const positionOffset = (index - (cards.length - 1) / 2) * 100; // Spread cards evenly
-          const rotationAngle = (index - (cards.length - 1) / 2) * 10; // Create a curve effect
+          // Calculate spread positions
+          const midIndex = (cards.length - 1) / 2;
+          const positionOffset = (index - midIndex) * 110; // Adjust for center alignment
+          const rotationAngle = (index - midIndex) * 8; // Tilt cards outward
 
           return (
             <div
@@ -72,23 +74,23 @@ const Hero = () => {
                 transform: `
                   translateX(${positionOffset}px) 
                   rotate(${rotationAngle}deg)
-                  translateY(${hoveredIndex === index ? "-40px" : "0px"})
-                  scale(${hoveredIndex === index ? 1.1 : 1})
+                  translateY(${hoveredIndex === index ? "-30px" : "10px"})
+                  scale(${hoveredIndex === index ? 1.15 : 1})
                 `,
                 zIndex: hoveredIndex === index ? 10 : index,
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative w-44 h-60 md:w-56 md:h-72 lg:w-64 lg:h-80">
+              <div className="relative w-36 h-52 md:w-48 md:h-64 lg:w-56 lg:h-72">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-cover rounded-lg shadow-xl border-2 border-white/10"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-white/10"
                 />
                 {/* Title Overlay */}
                 <div
-                  className={`absolute bottom-0 left-0 right-0 p-4 bg-black/80 text-center transition-opacity duration-300 ${
+                  className={`absolute bottom-0 left-0 right-0 p-3 bg-black/80 text-center transition-opacity duration-300 ${
                     hoveredIndex === index ? "opacity-100" : "opacity-0"
                   }`}
                 >
