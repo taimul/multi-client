@@ -43,6 +43,12 @@ const productCards = [
     image: "https://picsum.photos/400/400?random=7",
     price: "$100",
   },
+  {
+    id: 8,
+    title: "Ancient Dragon",
+    image: "https://picsum.photos/400/400?random=8",
+    price: "$10",
+  },
 ];
 
 const PopularProducts = () => {
@@ -55,6 +61,8 @@ const PopularProducts = () => {
         <p className="text-gray-400 text-center mb-6">
           Discover our most loved products that customers can’t get enough of.
         </p>
+
+        {/* Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {productCards.map((product) => (
             <ProductCard
