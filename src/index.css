@@ -3,26 +3,3 @@
 @tailwind utilities;
 
 /* Custom arrow styling */
-.slick-arrow {
-  background: rgba(255, 255, 255, 0.8) !important;
-  width: 30px !important;
-  height: 30px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  color: black !important;
-  z-index: 1;
-  transition: all 0.3s ease;
-}
-
-.slick-arrow:hover {
-  background: white !important;
-}
-
-.slick-prev {
-  left: -35px !important;
-}
-.slick-next {
-  right: -35px !important;
-}
