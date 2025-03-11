@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import RightArrowIcon from "../../assets/icons/RightArrowIcon";
+import SubCategoriesCard from "../Ui/SubCategoriesCard";
 
 const subCategories = [
   {
@@ -43,11 +44,6 @@ const subCategories = [
     title: "Steam Gift Card",
     image: "https://picsum.photos/300/200?random=9",
   },
-  //   {
-  //     id: 10,
-  //     title: "Amazon Gift Card",
-  //     image: "https://picsum.photos/300/200?random=10",
-  //   },
 ];
 
 // Custom Arrow Components
@@ -105,7 +101,7 @@ const SubCategories = () => {
   };
 
   return (
-    <div className="bg-black-gray w-full py-6">
+    <div className="w-full py-6">
       <div className="lg:max-w-[1440px] mx-auto relative">
         <h2 className="text-white text-2xl font-bold text-center mb-4">
           Browse Our Sub-Categories
@@ -114,19 +110,14 @@ const SubCategories = () => {
           Explore our wide range of categories, from gaming essentials to
           accessories and more.
         </p>
-        <Slider {...settings} className="bg-dark-gray p-4 rounded-lg">
+        <Slider {...settings} className=" p-4 rounded-lg">
           {subCategories.map((category) => (
-            <div key={category.id} className="px-2">
-              <div className="bg-black p-4 rounded-lg w-full text-center cursor-pointer hover:bg-primary transition-all duration-300">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="rounded-lg mb-2 w-full h-32 object-cover"
-                />
-                <span className="text-white text-sm font-semibold">
-                  {category.title}
-                </span>
-              </div>
+            <div key={category.id} className="px-2 mb-4">
+              <SubCategoriesCard
+                image={category.image}
+                title={category.title}
+                key={category.id}
+              />
             </div>
           ))}
         </Slider>

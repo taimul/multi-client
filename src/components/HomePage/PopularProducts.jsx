@@ -1,3 +1,5 @@
+import ProductCard from "../Ui/ProductCard";
+
 const productCards = [
   {
     id: 1,
@@ -45,30 +47,25 @@ const productCards = [
 
 const PopularProducts = () => {
   return (
-    <div className="w-full px-6 py-6">
-      <h2 className="text-white text-2xl font-bold text-center mb-4">
-        Popular Products
-      </h2>
-      <p className="text-gray-400 text-center mb-6">
-        Discover our most loved products that customers can’t get enough of.
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {productCards.map((product) => (
-          <div
-            key={product.id}
-            className="bg-black p-4 rounded-lg cursor-pointer hover:bg-primary transition-all duration-300"
-          >
-            <img
-              src={product.image}
-              alt={product.title}
-              className="rounded-lg mb-2 w-full h-40 object-cover"
+    <div className="w-full py-6">
+      <div className="lg:max-w-[1440px] mx-auto">
+        <h2 className="text-white text-2xl font-bold text-center mb-4">
+          Popular Products
+        </h2>
+        <p className="text-gray-400 text-center mb-6">
+          Discover our most loved products that customers can’t get enough of.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {productCards.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              image={product.image}
+              price={product.price}
+              title={product.title}
             />
-            <h3 className="text-white text-sm font-semibold">
-              {product.title}
-            </h3>
-            <p className="text-green-400 font-bold mt-2">{product.price}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
