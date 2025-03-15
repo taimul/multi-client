@@ -1,23 +1,42 @@
 const CartIcon = ({
   fill = "currentColor",
   size = 24,
-  width,
-  height,
-  className,
+  width = size,
+  height = size,
+  className = "",
 }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      id="Outline"
-      viewBox="0 0 24 24"
       fill={fill}
-      width={width || size}
-      height={height || size}
-      className={`${className}`}
+      width={width}
+      height={height}
+      className={className}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z" />
-      <circle cx="7" cy="22" r="2" />
-      <circle cx="17" cy="22" r="2" />
+      <path
+        d="M8.5024 16L5.50039 2.00006L1.99805 2"
+        stroke="#F2FCF2"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.5039 22C11.3329 22 12.0049 21.3284 12.0049 20.5C12.0049 19.6716 11.3329 19 10.5039 19C9.67495 19 9.00293 19.6716 9.00293 20.5C9.00293 21.3284 9.67495 22 10.5039 22Z"
+        stroke="#F2FCF2"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M17.5088 22C18.3378 22 19.0098 21.3284 19.0098 20.5C19.0098 19.6716 18.3378 19 17.5088 19C16.6798 19 16.0078 19.6716 16.0078 20.5C16.0078 21.3284 16.6798 22 17.5088 22Z"
+        stroke="#F2FCF2"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M6.51451 6.50781H21.9924C21.9977 6.50781 22.0021 6.51177 22.0024 6.5171C22.0024 11.1591 20.7235 16.1351 15.5265 16.0076H9.59022C8.5821 15.949 6.50977 16.5678 6.50977 18.9967H17.3138"
+        stroke="#F2FCF2"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 };
