@@ -101,7 +101,7 @@ const SubCategories = () => {
   };
 
   return (
-    <div className="w-full py-6">
+    <div className="w-full pt-12 pb-6">
       <div className="lg:max-w-[1440px] mx-auto relative">
         <h2 className="text-white text-2xl font-bold text-center mb-4">
           Browse Our Sub-Categories
@@ -110,7 +110,7 @@ const SubCategories = () => {
           Explore our wide range of categories, from gaming essentials to
           accessories and more.
         </p>
-        <Slider {...settings} className=" p-4 rounded-lg">
+        <Slider {...settings} className="rounded-lg">
           {subCategories.map((category) => (
             <div key={category.id} className="px-2 mb-4">
               <SubCategoriesCard

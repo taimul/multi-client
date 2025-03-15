@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const ProductCard = ({ image, title, price }) => {
   return (
-    <div className="relative bg-black-gray p-4 rounded-lg cursor-pointer  transition-all duration-300 border border-gray-700">
+    <div className="relative bg-black-gray p-4 rounded-lg cursor-pointer  transition-all duration-300 border border-black-gray">
       {/* Wishlist Icon (Top-Right) */}
 
       {/* Product Image */}
@@ -29,7 +29,7 @@ const ProductCard = ({ image, title, price }) => {
 
       {/* Price & Cart Button */}
       <div className="flex items-center justify-between">
-        <p className="text-primary font-bold">{price}</p>
+        <p className="text-primary font-bold text-lg">{price}</p>
         <Button
           isCustom={true}
           className="bg-primary p-3 rounded-md hover:bg-opacity-90 transition"
