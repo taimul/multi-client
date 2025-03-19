@@ -32,11 +32,11 @@ const cards = [
     title: "Elden Realm",
     image: "https://picsum.photos/400/400?random=6",
   },
-  {
-    id: 7,
-    title: "Ancient Dragon",
-    image: "https://picsum.photos/400/400?random=7",
-  },
+  // {
+  //   id: 7,
+  //   title: "Ancient Dragon",
+  //   image: "https://picsum.photos/400/400?random=7",
+  // },
 ];
 
 const Hero = () => {
@@ -63,26 +63,26 @@ const Hero = () => {
         {cards.map((card, index) => {
           // Calculate spread positions
           const midIndex = (cards.length - 1) / 2;
-          const positionOffset = (index - midIndex) * 110; // Adjust for center alignment
+          const positionOffset = (index - midIndex) * 130; // Adjust for center alignment
           const rotationAngle = (index - midIndex) * 8; // Tilt cards outward
 
           return (
             <div
               key={card.id}
-              className="absolute transition-all duration-500 ease-in-out cursor-pointer"
+              className="absolute transition-all duration-300 ease-in-out cursor-pointer"
               style={{
                 transform: `
                   translateX(${positionOffset}px) 
                   rotate(${rotationAngle}deg)
                   translateY(${hoveredIndex === index ? "-30px" : "10px"})
-                  scale(${hoveredIndex === index ? 1.15 : 1})
+                  scale(${hoveredIndex === index ? 1.05 : 1})
                 `,
                 zIndex: hoveredIndex === index ? 10 : index,
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative w-36 h-52 md:w-48 md:h-64 lg:w-56 lg:h-72">
+              <div className="relative w-36 h-52 lg:w-48 lg:h-64 ">
                 <img
                   src={card.image}
                   alt={card.title}
