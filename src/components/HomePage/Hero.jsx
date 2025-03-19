@@ -1,5 +1,4 @@
 import { useState } from "react";
-import heroBg from "../../assets/hero.png";
 
 const cards = [
   {
@@ -43,10 +42,7 @@ const Hero = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div
-      className="relative min-h-[90svh] flex flex-col items-center justify-center bg-fill bg-center text-white"
-      style={{ backgroundImage: `url(${heroBg})` }}
-    >
+    <div className="relative min-h-[90svh] flex flex-col items-center justify-center bg-fill bg-center text-white">
       {/* Text Content */}
       <div className="text-center px-4 mb-10">
         <h1 className="text-5xl lg:text-5xl font-bold mb-6">
